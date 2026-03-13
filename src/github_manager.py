@@ -12,8 +12,8 @@ if not TOKEN:
     print("Assicurati di averla creata nelle Variabili d'Ambiente e riavviato il terminale/VS Code.")
     exit()
 # Il tuo username e il nome della repository del TechTutorPlay Lab
-REPO_OWNER = "DVCreativeCoder1905"
-REPO_NAME = "TechTutorPlay"
+REPO_OWNER = "TechTutorPlay-Lab"
+REPO_NAME = "TechTutorPlay-Lab-Core"
 
 # L'URL base per le API delle Issues di GitHub
 URL = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues"
@@ -47,4 +47,5 @@ crea_obiettivo(
     "Implementazione Test Benchmark RTX 5070", 
     "Configurare lo script Python per misurare i TFLOPS sulla nuova scheda video del Lab."
 )
+
 input("Premi INVIO per chiudere")
