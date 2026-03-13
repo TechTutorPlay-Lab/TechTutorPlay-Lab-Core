@@ -10,9 +10,11 @@ This core repository is part of the **GitHub for Startups** program, leveraging 
 * `/docs`: Project documentation and architecture diagrams.
 * `/security`: Security policies and scan reports.
 * `/tests`: Automated testing suite for the MVP.
+* `/previous_tests`: Old code tests
+* `/v1-web-prototype`: Old website
 
 ## 🚀 Vision
 TechTutorPlay Lab aims to democratize access to high-level IT skills by integrating Artificial Intelligence into the learning process, creating a bridge between traditional education and the professional software engineering world.
 
 ---
-© 2026 TechTutorPlay Lab - Daniele Vendramin. All rights reserved.
+© 2026 TechTutorPlay Lab - Daniele Vendramin. All rights reserved. www.techtutorplay.tech
