@@ -1,0 +1,63 @@
+:root {
+    --primary: #6e40ff;
+    --dark: #0f0f0f;
+    --light: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span { color: var(--primary); }
+
+ul { display: flex; list-style: none; }
+ul li { margin-left: 20px; }
+ul li a { color: white; text-decoration: none; transition: 0.3s; }
+ul li a:hover { color: var(--primary); }
+
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Animazione fluida per 240Hz */
+    animation: fadeIn 1.5s ease-out;
+}
+
+h1 { font-size: 3rem; margin-bottom: 10px; }
+
+.blink {
+    color: #ffcc00;
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
