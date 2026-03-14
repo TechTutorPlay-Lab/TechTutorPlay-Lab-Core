@@ -8,11 +8,9 @@ This core repository is part of the **GitHub for Startups** program, leveraging 
 ## 📁 Repository Structure
 * `/src`: Main application source code.
 * `/docs`: Project documentation and architecture diagrams.
-* `/old_docs`: Old documentation.
 * `/security`: Security policies and scan reports.
-* `/old_security`: Old security code.
 * `/tests`: Automated testing suite for the MVP.
-* `/previous_tests`: Old code tests.
+* `/prototype`: Contents of old repository (except src).
 * `/v1-web-prototype`: Old website.
 
 ## 🚀 Vision
