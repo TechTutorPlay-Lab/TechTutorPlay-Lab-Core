@@ -25,7 +25,7 @@ try:
     # Test della connessione
     client.admin.command('ping')
     print("✅ FINALMENTE! Connessione stabilita con successo.")
-    db = client['TechTutorPlay_Lab']
+    db = client['TechTutorPlay-Main']
     collection = db['site_monitoring_logs']
 
 except Exception as e:
