@@ -3,53 +3,81 @@ import time
 import requests
 import sys
 from pymongo import MongoClient
-import ssl # Importiamo il modulo per la sicurezza avanzata
+from datadog import initialize, api
 
 # --- 1. CONFIGURAZIONE ---
+# Recuperiamo le chiavi dai Secrets di GitHub Actions
 MONGODB_URI = os.getenv('MONGODB_URI')
 DD_API_KEY = os.getenv('DD_API_KEY')
-DD_SITE = os.getenv('DD_SITE', 'us5.datadoghq.com')
+DD_SITE = "us5.datadoghq.com" # Il tuo datacenter Datadog
 
-# --- 2. CONNESSIONE MONGODB (CONFIGURAZIONE FORZATA) ---
+# Inizializzazione API Datadog
+options = {
+    'api_key': DD_API_KEY,
+    'api_host': f"https://api.{DD_SITE}"
+}
+initialize(**options)
+
+# --- 2. CONNESSIONE MONGODB ---
 try:
-    # Usiamo MongoClient con le impostazioni più compatibili per il Cloud
+    # Connessione al Cluster con bypass SSL per GitHub Actions
     client = MongoClient(
         MONGODB_URI,
         tls=True,
-        # Questa riga forza Python a usare TLS 1.2, ignorando i problemi di handshake
         tlsAllowInvalidCertificates=True,
-        serverSelectionTimeoutMS=5000,
-        connectTimeoutMS=10000
+        serverSelectionTimeoutMS=5000
     )
+    # Puntiamo al tuo database principale
+    db = client['TechTutorPlay-Main']
+    collection = db['site_monitoring_logs']
     
     # Test della connessione
     client.admin.command('ping')
-    print("✅ FINALMENTE! Connessione stabilita con successo.")
-    db = client['TechTutorPlay-Main']
-    collection = db['site_monitoring_logs']
-
+    print("✅ MongoDB: Connesso a TechTutorPlay-Main")
 except Exception as e:
-    print(f"❌ IL DATABASE RESISTE ANCORA: {e}")
+    print(f"❌ MongoDB Errore: {e}")
     sys.exit(1)
 
-# --- 3. MONITORAGGIO SEMPLIFICATO ---
-def monitora():
-    urls = ["https://www.techtutorplay.tech", "https://www.techtutorplay.com"]
-    for url in urls:
-        try:
-            r = requests.get(url, timeout=10)
-            status = "ONLINE" if r.status_code == 200 else "OFFLINE"
-            
-            # Salvataggio su MongoDB
-            collection.insert_one({
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                "url": url,
-                "status": status,
-                "provider": "GitHub_Actions_Cloud_Force"
-            })
-            print(f"🚀 {url} -> {status}")
-        except Exception as err:
-            print(f"⚠️ Errore su {url}: {err}")
+# --- 3. FUNZIONE DI MONITORAGGIO ---
+def esegui_check(url):
+    try:
+        # Calcolo latenza
+        inizio = time.time()
+        r = requests.get(url, timeout=15)
+        latenza = time.time() - inizio
+        status = "ONLINE" if r.status_code == 200 else "OFFLINE"
 
+        # --- INVIO A DATADOG (DEBUG) ---
+        # Inviamo la metrica con il tag specifico per il sito
+        dd_res = api.Metric.send(
+            metric='techtutorplay.latency',
+            points=[(int(time.time()), latenza)],
+            tags=[f"site:{url}", "env:cloud_github"]
+        )
+        print(f"📊 Datadog ({url}): {dd_res}")
+
+        # --- SALVATAGGIO SU MONGODB ---
+        collection.insert_one({
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "url": url,
+            "latency": round(latenza, 4),
+            "status": status,
+            "provider": "GitHub_Actions_Cloud"
+        })
+        print(f"🚀 MongoDB: Salvato check per {url}")
+
+    except Exception as e:
+        print(f"⚠️ Errore durante il check di {url}: {e}")
+
+# --- 4. ESECUZIONE ---
 if __name__ == "__main__":
-    monitora()
+    # La tua flotta di domini da controllare
+    siti = [
+        "https://www.techtutorplay.tech", 
+        "https://www.techtutorplay.com"
+    ]
+    
+    print(f"--- Inizio Monitoraggio: {time.strftime('%H:%M:%S')} ---")
+    for s in siti:
+        esegui_check(s)
+    print("--- Fine Monitoraggio ---")
