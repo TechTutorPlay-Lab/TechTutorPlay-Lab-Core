@@ -1,33 +1,32 @@
 name: TechTutorPlay Cloud Monitor
 
-# Definisce quando deve partire l'automazione
 on:
   schedule:
-    - cron: '*/30 * * * *' # Esegue lo script ogni 30 minuti (puoi cambiare la frequenza)
-  workflow_dispatch:      # Permette di avviarlo a mano con un tasto per testare
+    - cron: '*/30 * * * *' # Ogni 30 minuti
+  workflow_dispatch:      # Permette l'avvio manuale
 
 jobs:
   run-monitor:
-    runs-on: ubuntu-latest # Usa un server Linux di GitHub nel cloud
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del codice
-        uses: actions/checkout@v4 # Scarica i file del tuo repository
+      - name: Checkout Codice
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v5 # Installa Python sul server di GitHub
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Installazione librerie
+      - name: Installazione Dipendenze
         run: |
-          pip install requests pymongo datadog python-dotenv
-          # Installa tutto il necessario per far girare lo script
+          pip install requests pymongo datadog python-dotenv dnspython
 
       - name: Esecuzione Script
         env:
-          # Collega i segreti di GitHub alle variabili che userà lo script
+          # Collega i Secrets impostati su GitHub
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           DD_API_KEY: ${{ secrets.DD_API_KEY }}
-          DD_SITE: ${{ secrets.DD_SITE }}
-        run: python src/New_Check_Websites.py # Avvia il tuo script
+          DD_SITE: "us5.datadoghq.com"
+        # Puntiamo alla cartella src
+        run: python src/New_Check_Websites.py
