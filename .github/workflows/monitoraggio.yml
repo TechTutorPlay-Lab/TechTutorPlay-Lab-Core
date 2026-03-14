@@ -30,4 +30,4 @@ jobs:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           DD_API_KEY: ${{ secrets.DD_API_KEY }}
           DD_SITE: ${{ secrets.DD_SITE }}
-        run: python New_Check_Websites.py # Avvia il tuo script
+        run: python src/New_Check_Websites.py # Avvia il tuo script
