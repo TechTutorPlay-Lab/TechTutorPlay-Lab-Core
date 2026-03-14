@@ -13,21 +13,20 @@ DD_SITE = os.getenv('DD_SITE', 'us5.datadoghq.com')
 # Inizializza Datadog
 initialize(api_key=DD_API_KEY, api_host=f"https://api.{DD_SITE}")
 
-# --- 2. CONNESSIONE MONGODB (MODALITÀ COMPATIBILITÀ CLOUD) ---
+# --- 2. CONNESSIONE MONGODB ---
 try:
-    # Usiamo la configurazione più permissiva possibile per bypassare i blocchi SSL di GitHub
+    # Usiamo solo l'opzione necessaria per bypassare il controllo certificati
     client = MongoClient(
         MONGODB_URI,
         tls=True,
-        tlsAllowInvalidCertificates=True,
-        tlsInsecure=True, # Forza la connessione anche se l'handshake fallisce
+        tlsAllowInvalidCertificates=True, 
         serverSelectionTimeoutMS=10000,
         connectTimeoutMS=10000
     )
     
     # Test della connessione
     client.admin.command('ping')
-    print("✅ CONNESSIONE RIUSCITA: MongoDB Atlas ha accettato il Lab!")
+    print("✅ CONNESSIONE RIUSCITA: MongoDB Atlas è collegato!")
     db = client['TechTutorPlay_Lab']
     collection = db['site_monitoring_logs']
 
@@ -56,7 +55,7 @@ def monitora(url):
             "url": url,
             "latency": round(latenza, 4),
             "status": status,
-            "provider": "GitHub_Actions_Final_Fix"
+            "provider": "GitHub_Actions_Cloud_Final"
         })
         print(f"🚀 {url} -> {status} ({latenza:.3f}s)")
 
@@ -65,7 +64,7 @@ def monitora(url):
 
 if __name__ == "__main__":
     siti = ["https://www.techtutorplay.tech", "https://www.techtutorplay.com"]
-    print(f"--- Avvio monitoraggio: {time.strftime('%H:%M:%S')} ---")
+    print(f"--- Avvio: {time.strftime('%H:%M:%S')} ---")
     for s in siti:
         monitora(s)
-    print("--- Completato ---")
+    print("--- Fine ---")
