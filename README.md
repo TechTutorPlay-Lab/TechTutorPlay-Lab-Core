@@ -26,5 +26,8 @@ The **TechTutorPlay Lab** ecosystem is built on a high-performance multi-languag
 * **Infrastructure:** Native support for **Windows Server 2025** and **Windows 11 Pro** environments.
 * **Hardware-Accelerated Dev:** Optimized for **NVIDIA RTX 5000 Series** (CUDA/Tensor Cores) and **AMD Ryzen 9 X3D** architectures.
 
+
+### Security: AES-256 encryption for sensitive data flow.
+
 ---
 © 2026 TechTutorPlay Lab - Daniele Vendramin. Licensed under the [MIT License](LICENSE). www.techtutorplay.tech
