@@ -29,5 +29,7 @@ The **TechTutorPlay Lab** ecosystem is built on a high-performance multi-languag
 
 ### Security: AES-256 encryption for sensitive data flow.
 
+### Auth: Windows Hello & Biometric integration plan.
+
 ---
 © 2026 TechTutorPlay Lab - Daniele Vendramin. Licensed under the [MIT License](LICENSE). www.techtutorplay.tech
