@@ -33,5 +33,7 @@ The **TechTutorPlay Lab** ecosystem is built on a high-performance multi-languag
 
 ### DB Safety: MongoDB Atlas IP Whitelisting & Role-Based Access.
 
+### Compliance: GDPR-ready architecture for student privacy.
+
 ---
 © 2026 TechTutorPlay Lab - Daniele Vendramin. Licensed under the [MIT License](LICENSE). www.techtutorplay.tech
