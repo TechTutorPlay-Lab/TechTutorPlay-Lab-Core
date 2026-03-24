@@ -17,4 +17,4 @@ This core repository is part of the **GitHub for Startups** program, leveraging 
 TechTutorPlay Lab aims to democratize access to high-level IT skills by integrating Artificial Intelligence into the learning process, creating a bridge between traditional education and the professional software engineering world.
 
 ---
-© 2026 TechTutorPlay Lab - Daniele Vendramin. All rights reserved. www.techtutorplay.tech
+© 2026 TechTutorPlay Lab - Daniele Vendramin. www.techtutorplay.tech
