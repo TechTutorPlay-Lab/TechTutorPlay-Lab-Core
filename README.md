@@ -31,5 +31,7 @@ The **TechTutorPlay Lab** ecosystem is built on a high-performance multi-languag
 
 ### Auth: Windows Hello & Biometric integration plan.
 
+### DB Safety: MongoDB Atlas IP Whitelisting & Role-Based Access.
+
 ---
 © 2026 TechTutorPlay Lab - Daniele Vendramin. Licensed under the [MIT License](LICENSE). www.techtutorplay.tech
