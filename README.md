@@ -16,5 +16,15 @@ This core repository is part of the **GitHub for Startups** program, leveraging 
 ## 🚀 Vision
 TechTutorPlay Lab aims to democratize access to high-level IT skills by integrating Artificial Intelligence into the learning process, creating a bridge between traditional education and the professional software engineering world.
 
+## 🛠 Tech Stack & Infrastructure
+
+The **TechTutorPlay Lab** ecosystem is built on a high-performance multi-language architecture:
+
+* **Core Logic:** `C#` (.NET 8/9) for system-level tools and robust back-end services.
+* **Automation & Scripting:** `Python` and `PowerShell` for server orchestration and AI integration.
+* **Database:** `MongoDB` for flexible, scalable educational data management.
+* **Infrastructure:** Native support for **Windows Server 2025** and **Windows 11 Pro** environments.
+* **Hardware-Accelerated Dev:** Optimized for **NVIDIA RTX 5000 Series** (CUDA/Tensor Cores) and **AMD Ryzen 9 X3D** architectures.
+
 ---
 © 2026 TechTutorPlay Lab - Daniele Vendramin. Licensed under the [MIT License](LICENSE). www.techtutorplay.tech
