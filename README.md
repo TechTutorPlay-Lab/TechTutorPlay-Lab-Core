@@ -2,15 +2,15 @@
 This core repository is part of the **GitHub for Startups** program, leveraging high-end tools to build a scalable educational platform:
 * **GitHub Enterprise:** Advanced collaboration and security features.
 * **GitHub Copilot Business:** AI-native development workflow.
-* **GitHub Advanced Security:** Real-time vulnerability and secret scanning (Active Trial).
+* **GitHub Advanced Security:** Real-time vulnerability and secret scanning (Trial Expired).
 * **Hardware:** Developed on an AMD 7900X3D / NVIDIA RTX 5070 workstation.
 
 ## 📁 Repository Structure
 * `/src`: Main application source code.
 * `/docs`: Project documentation and architecture diagrams.
 * `/security`: Security policies and scan reports.
-* `/tests`: Automated testing suite for the MVP.
-* `/prototype`: Contents of old repository (except src).
+* `/tests`: Automated testing suite for our open-source projects.
+* `/prototype`: Contents of old repository.
 * `/v1-web-prototype`: Old website.
 
 ## 🚀 Vision
