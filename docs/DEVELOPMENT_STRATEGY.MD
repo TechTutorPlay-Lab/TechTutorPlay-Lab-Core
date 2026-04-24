@@ -8,7 +8,7 @@ In line with our educational mission, **every single line of code must be commen
 * **What** the line does.
 * **Why** it is necessary for the logic of the program.
 
-## 3. Iterative MVP Focus
+## 3. Iterative MVP and open-source Focus
 We prioritize core functionality over "perfect" features. We follow the principle of "Build, Test, Learn" to ensure rapid delivery of educational value.
 
 ## 4. Hardware-Accelerated Dev
